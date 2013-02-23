@@ -19,7 +19,7 @@ Install via npm:
 
 ## Usage
 
-    var beholder = require('../lib/beholder')
+    var beholder = require('beholder')
 
     var watcher = beholder('**/*')
 
