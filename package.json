@@ -1,0 +1,39 @@
+{
+  "name": "beholder",
+  "version": "0.1.0",
+  "author": "Charles Moncrief <cmoncrief@gmail.com>",
+  "description": "Robust cross-platform file watcher",
+  "main": "lib/beholder.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "prepublish": "cake build",
+    "test": "cake test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cmoncrief/beholder.git"
+  },
+  "keywords": [
+    "watch",
+    "fs",
+    "watchFile",
+    "watcher",
+    "file"
+  ],
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "glob": "~3.1.20",
+    "minimatch": "~0.2.9",
+    "async": "~0.2.5"
+  },
+  "devDependencies": {
+    "mocha": "~1.8.1",
+    "coffee-script": "~1.4.0"
+  },
+  "engines": {
+    "node": ">=0.8"
+  }
+}
