@@ -37,7 +37,7 @@ class Beholder extends EventEmitter
   startWatch: (pattern, cb) ->
 
     if process.platform is 'win32'
-      pattern = pattern.replace(new RegExp('\\'), '/')
+      `pattern = pattern.replace(/\\/g, "/")`
 
     @patterns.push pattern
 
@@ -72,7 +72,12 @@ class Beholder extends EventEmitter
           return if err?.code is 'ENOENT'
           return @handleError(err) if err
 
-          @processPath(path.join(base, file), null, true) for file in files
+          for file in files
+            filePath = path.join base, file
+            if process.platform is 'win32'
+              `filePath = filePath.replace(/\\/g, "/")`
+            @processPath filePath, null, true
+            
           return
 
       else
