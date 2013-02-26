@@ -1,6 +1,6 @@
 {
   "name": "beholder",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Charles Moncrief <cmoncrief@gmail.com>",
   "description": "Robust cross-platform file watcher",
   "main": "lib/beholder.js",
@@ -18,7 +18,7 @@
   "keywords": [
     "watch",
     "fs",
-    "watchFile",
+    "watchfile",
     "watcher",
     "file"
   ],
