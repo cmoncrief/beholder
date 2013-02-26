@@ -63,13 +63,11 @@ class Beholder extends EventEmitter
   walkPath: (base) =>
 
     fs.stat base, (err, stats) =>
-      return if err?.code is 'ENOENT'
       return @handleError(err) if err
 
       if stats.isDirectory()
         @addDir base
         fs.readdir base, (err, files) =>
-          return if err?.code is 'ENOENT'
           return @handleError(err) if err
 
           for file in files
@@ -224,9 +222,10 @@ class Beholder extends EventEmitter
 
     path.basename(filePath)[0] is '.' and !@options.includeHidden
 
-  # Emits the error event and returns the error
+  # Emits the error event and returns the error. Suppress ENOENT
   handleError: (error) =>
 
+    return error if error.code is 'ENOENT'
     @emit 'error', error
     error
 
