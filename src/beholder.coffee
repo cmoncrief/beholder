@@ -24,6 +24,7 @@ class Beholder extends EventEmitter
     @options.persistent ?= true
     @options.includeHidden ?= false
     @options.exclude ?= []
+    @options.debug ?= false
     @pollOpts = {interval: @options.interval, persistent: @options.persistent}
 
     @startWatch @pattern, cb
@@ -126,7 +127,7 @@ class Beholder extends EventEmitter
       return @initPoll(watchPath, watchFn)
 
     try
-      fs.watch path.normalize(watchPath), @pollOpts, (event, filename) =>
+      fs.watch path.normalize(watchPath), (event, filename) =>
         watchFn watchPath, event
     catch err
       if err.code is 'EMFILE'
@@ -138,7 +139,7 @@ class Beholder extends EventEmitter
   # Start polling a given path.
   initPoll: (watchPath, watchFn) ->
     
-    fs.watchFile path.normalize(watchPath), (curr, prev) =>
+    fs.watchFile path.normalize(watchPath), @pollOpts, (curr, prev) =>
       return if curr.mtime.getTime() and curr.mtime.getTime() < prev.mtime.getTime()
       watchFn watchPath, 'change' 
 
@@ -155,7 +156,7 @@ class Beholder extends EventEmitter
     file = i for i in @files when i.name is filePath
 
     fs.stat filePath, (err, stats) =>
-      return @removeWatch(file) if err?.code is 'ENOENT'
+      if err?.code is 'ENOENT' then @removeWatch(file)
       return @handleError(err) if err
       return if event isnt 'new' and stats.mtime.getTime() is file.mtime.getTime()
 
@@ -225,6 +226,7 @@ class Beholder extends EventEmitter
   # Emits the error event and returns the error. Suppress ENOENT
   handleError: (error) =>
 
+    console.log(error) if @options.debug
     return error if error.code is 'ENOENT'
     @emit 'error', error
     error

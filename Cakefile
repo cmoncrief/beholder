@@ -18,6 +18,7 @@ task 'test', (options) ->
     --require coffee-script
     --colors
     --reporter spec
+    --timeout 10000
   ", (err, output) ->
     throw err if err
     console.log output

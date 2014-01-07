@@ -1,6 +1,6 @@
 {
   "name": "beholder",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Charles Moncrief <cmoncrief@gmail.com>",
   "description": "Robust cross-platform file watcher",
   "main": "lib/beholder.js",
@@ -25,13 +25,13 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
-    "glob": "~3.1.20",
+    "glob": "~3.2.7",
     "minimatch": "~0.2.9",
     "async": "~0.2.5"
   },
   "devDependencies": {
     "mocha": "~1.8.1",
-    "coffee-script": "~1.4.0"
+    "coffee-script": "~1.6.3"
   },
   "engines": {
     "node": ">=0.8"
