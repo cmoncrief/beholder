@@ -165,7 +165,7 @@ class Beholder extends EventEmitter
       @emit 'any', filePath, event
       @emit event, filePath
 
-      @removeWatch filePath, true
+      @removeWatch file, true
       @addFile filePath, stats, true
 
       file = null
