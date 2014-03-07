@@ -2,6 +2,7 @@ assert   = require 'assert'
 fs       = require 'fs'
 path     = require 'path'
 beholder = require '../lib/beholder'
+mkdirp   = require 'mkdirp'
 
 pattern = path.join __dirname, 'fixtures/remove/**/*'
 
@@ -19,7 +20,8 @@ describe 'Remove events', ->
   before ->
     for file, i in newFiles
       newFiles[i] = path.join(__dirname, file)
-      try fs.writeFileSync newFiles[i], 'test'
+      mkdirp.sync path.dirname(newFiles[i])
+      fs.writeFileSync newFiles[i], 'test'
 
   it 'should emit events on file deletion', (done) ->
 
