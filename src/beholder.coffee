@@ -185,7 +185,7 @@ class Beholder extends EventEmitter
     @files = (i for i in @files when i.name isnt file.name)
     @dirs = (i for i in @dirs when i.name isnt file.name)
     @emit('remove', file.name) unless silent
-    @emit('any', file.name) unless silent
+    @emit('any', file.name, 'remove') unless silent
     file.watcher = null
     file = null
 
