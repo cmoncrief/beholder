@@ -11,10 +11,10 @@ task 'test', (options) ->
   if options.path
     testPath = path.join 'test/', "#{options.path}.coffee"
 
-  exec "NODE_ENV=test 
+  exec "NODE_ENV=test
     ./node_modules/.bin/mocha
     #{testPath}
-    --compilers coffee:coffee-script
+    --compilers coffee:coffee-script/register
     --require coffee-script
     --colors
     --reporter spec

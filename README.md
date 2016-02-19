@@ -6,7 +6,7 @@ Beholder is a cross-platform file watcher for Node.js.
 
 * Watch full directory trees for changes
 * Globbing syntax for fine-grained control
-* Detects new files and directories automatically 
+* Detects new files and directories automatically
 * Handles large file sets
 * Event-based API
 * Cross-platform
@@ -99,7 +99,7 @@ To run the test suite, invoke the following commands in the repository:
 
 (The MIT License)
 
-Copyright (c) 2013 Charles Moncrief <<cmoncrief@gmail.com>>
+Copyright (c) 2016 Charles Moncrief <<cmoncrief@gmail.com>>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
